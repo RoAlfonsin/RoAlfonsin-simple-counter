@@ -1,24 +1,26 @@
 import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import NumberCard from "./numberCard";
+import ClockIcon from "./clockIcon";
 
 //create your first component
-const Home = () => {
+const Home = (props) => {
+	
+	let firstDigit = props.seconds % 10
+	let secondDigit = Math.floor(props.seconds / 10) % 10
+	let thirdDigit = Math.floor(props.seconds / 100) % 10
+	let fourthDigit = Math.floor(props.seconds / 1000) % 10
+	let fifthDigit = Math.floor(props.seconds / 10000) % 10
+	let sixthDigit = Math.floor(props.seconds / 100000) % 10
+	
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container-flex d-flex justify-content-center m-3">
+			<ClockIcon/>
+			<NumberCard number={sixthDigit} />
+			<NumberCard number={fifthDigit} />
+			<NumberCard number={fourthDigit} />
+			<NumberCard number={thirdDigit} />
+			<NumberCard number={secondDigit} />
+			<NumberCard number={firstDigit} />
 		</div>
 	);
 };
